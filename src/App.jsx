@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/navbar/NavBar";
 import Profile from "./components/profile/Profile";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Navbar } from "react-bootstrap";
 import NotFoundPage from "./components/notFoundPage/NotFoundPage";
 import LoginForm from "./components/loginForm/LoginForm";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const protectedRoutes = createBrowserRouter([
     {
       path: "/",
@@ -26,7 +25,7 @@ function App() {
   const otherRoutes = createBrowserRouter([
     {
       path: "/",
-      element: <LoginForm />,
+      element: <LoginForm setIsAuthenticated={setIsAuthenticated} />,
     },
     {
       path: "*",
@@ -38,7 +37,7 @@ function App() {
       {!isAuthenticated ? (
         <RouterProvider router={otherRoutes} />
       ) : (
-        <NavBar>
+        <NavBar setIsAuthenticated={setIsAuthenticated}>
           <RouterProvider router={protectedRoutes} />
         </NavBar>
       )}

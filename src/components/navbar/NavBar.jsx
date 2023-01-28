@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -13,22 +12,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
-import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import { AccountCircle } from "@mui/icons-material";
-import Toolbar from "./toolbar/Toolbar";
+import Toolbar from "../toolbar/Toolbar";
 
 const drawerWidth = 240;
 
-const settings = ["Profile", "Account", "Settings", "Logout"];
-
 function ResponsiveDrawer(props) {
-  const { window } = props;
+  const { window, setIsAuthenticated } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -74,6 +63,7 @@ function ResponsiveDrawer(props) {
   return (
     <div>
       <Toolbar
+        setIsAuthenticated={setIsAuthenticated}
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}

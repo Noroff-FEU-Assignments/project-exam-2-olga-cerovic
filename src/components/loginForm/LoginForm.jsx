@@ -1,10 +1,9 @@
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL, LOGIN_PATH } from "../../api";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
 const schema = yup.object().shape({
@@ -15,10 +14,10 @@ const schema = yup.object().shape({
   password: yup.string().required("Please enter your password"),
 });
 
-function LoginForm() {
+function LoginForm(props) {
+  const { setIsAuthenticated } = props;
   const [unsuccessfulLoginMessage, setUnsuccessfulLoginMessage] =
     useState(null);
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -31,12 +30,11 @@ function LoginForm() {
     setUnsuccessfulLoginMessage(null);
     try {
       const response = await axios.post(`${BASE_URL}/${LOGIN_PATH}`, {
-        identifier: data.email,
+        email: data.email,
         password: data.password,
       });
       if (response?.status === 200) {
-        console.log("login successful");
-        navigate("/admin");
+        setIsAuthenticated(true);
       }
     } catch (error) {
       setUnsuccessfulLoginMessage("Incorrect email or password.");

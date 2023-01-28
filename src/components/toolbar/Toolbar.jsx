@@ -8,7 +8,7 @@ import Menu from "@mui/material/Menu";
 import { Toolbar as MuiToolbar } from "@mui/material";
 
 function Toolbar(props) {
-  const { mobileOpen, setMobileOpen, handleDrawerToggle } = props;
+  const { handleDrawerToggle, setIsAuthenticated } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleMenu = (event) => {
@@ -17,6 +17,10 @@ function Toolbar(props) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
   };
 
   return (
@@ -56,7 +60,7 @@ function Toolbar(props) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
         </Menu>
       </div>
