@@ -1,15 +1,17 @@
 import { IconButton } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import { Toolbar as MuiToolbar } from "@mui/material";
+import { AuthenticationContext } from "../../App";
 
 function Toolbar(props) {
-  const { handleDrawerToggle, setIsAuthenticated } = props;
+  const { handleDrawerToggle } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { setIsAuthenticated } = useContext(AuthenticationContext);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);

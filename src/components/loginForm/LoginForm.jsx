@@ -3,8 +3,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL, LOGIN_PATH } from "../../api";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
+import { AuthenticationContext } from "../../App";
 
 const schema = yup.object().shape({
   email: yup
@@ -14,10 +15,12 @@ const schema = yup.object().shape({
   password: yup.string().required("Please enter your password"),
 });
 
-function LoginForm(props) {
-  const { setIsAuthenticated } = props;
+function LoginForm() {
+  const { setIsAuthenticated,} = useContext(AuthenticationContext);
+
   const [unsuccessfulLoginMessage, setUnsuccessfulLoginMessage] =
     useState(null);
+    
   const {
     register,
     handleSubmit,

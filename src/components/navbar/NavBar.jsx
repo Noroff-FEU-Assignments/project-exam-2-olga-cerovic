@@ -17,7 +17,7 @@ import Toolbar from "../toolbar/Toolbar";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
-  const { window, setIsAuthenticated } = props;
+  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -63,7 +63,6 @@ function ResponsiveDrawer(props) {
   return (
     <div>
       <Toolbar
-        setIsAuthenticated={setIsAuthenticated}
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
