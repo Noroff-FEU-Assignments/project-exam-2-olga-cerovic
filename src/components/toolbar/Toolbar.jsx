@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import { Toolbar as MuiToolbar } from "@mui/material";
 import { AuthenticationContext } from "../../App";
+import { redirect } from "react-router-dom";
 
 function Toolbar(props) {
   const { handleDrawerToggle } = props;
@@ -22,7 +23,8 @@ function Toolbar(props) {
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
+    redirect("/");
+    setIsAuthenticated(localStorage.clear());
   };
 
   return (
@@ -46,7 +48,11 @@ function Toolbar(props) {
         FionaBombona
       </Typography>
       <div>
-        <Avatar alt="Remy Sharp" onClick={handleMenu} />
+        <Avatar
+          alt="Remy Sharp"
+          onClick={handleMenu}
+          src={localStorage.getItem("avatar")}
+        />
         <Menu
           id="menu-appbar"
           anchorEl={anchorEl}

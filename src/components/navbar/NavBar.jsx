@@ -13,10 +13,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "../toolbar/Toolbar";
+import Profile from "../profile/Profile";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
+const menuItems = [
+  { name: "My Profile", link: "/profile" },
+  { name: "All Posts", link: "/posts" },
+];
 
-function ResponsiveDrawer(props) {
+function NavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -25,36 +31,20 @@ function ResponsiveDrawer(props) {
   };
 
   const drawer = (
-    <div>
-      <Divider />
-      <List>
-        {["Inbox", "My Profile", "People you follow", "All Posts"].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
-      </List>
-      <Divider />
-      <List>
-        {["People", "All Posts", "Archive"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
+    <List sx={{ mt: 8 }}>
+      {menuItems.map((menuItem, index) => (
+        <ListItem key={menuItem.name} disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <NavLink to={menuItem.link}>
+              <ListItemText primary={menuItem.name} />
+            </NavLink>
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
   );
 
   const container =
@@ -122,14 +112,14 @@ function ResponsiveDrawer(props) {
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
         >
-          {props.children}
+          <Outlet />{" "}
         </Box>
       </Box>
     </div>
   );
 }
 
-ResponsiveDrawer.propTypes = {
+NavBar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -137,4 +127,4 @@ ResponsiveDrawer.propTypes = {
   window: PropTypes.func,
 };
 
-export default ResponsiveDrawer;
+export default NavBar;

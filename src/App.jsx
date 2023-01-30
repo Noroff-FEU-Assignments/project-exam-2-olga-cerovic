@@ -1,14 +1,18 @@
 import React, { createContext, useState } from "react";
 import { Box } from "@mui/material";
 import NavBar from "./components/navbar/NavBar";
-import { RouterProvider } from "react-router-dom";
+import { Outlet, RouterProvider } from "react-router-dom";
+import styles from "./components/loginForm/LoginForm.module.css";
 
 import { otherRoutes, protectedRoutes } from "./routes";
 
 export const AuthenticationContext = createContext();
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("token")
+  );
+  console.log(isAuthenticated);
 
   return (
     <Box>
@@ -16,11 +20,11 @@ function App() {
         value={{ isAuthenticated, setIsAuthenticated }}
       >
         {!isAuthenticated ? (
-          <RouterProvider router={otherRoutes} />
+          <Box className={styles.loginContainer}>
+            <RouterProvider router={otherRoutes} />
+          </Box>
         ) : (
-          <NavBar>
-            <RouterProvider router={protectedRoutes} />
-          </NavBar>
+          <RouterProvider router={protectedRoutes}></RouterProvider>
         )}
       </AuthenticationContext.Provider>
     </Box>

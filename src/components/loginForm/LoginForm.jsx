@@ -6,6 +6,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import { AuthenticationContext } from "../../App";
+import styles from "./LoginForm.module.css";
 
 const schema = yup.object().shape({
   email: yup
@@ -16,11 +17,11 @@ const schema = yup.object().shape({
 });
 
 function LoginForm() {
-  const { setIsAuthenticated,} = useContext(AuthenticationContext);
+  const { setIsAuthenticated } = useContext(AuthenticationContext);
 
   const [unsuccessfulLoginMessage, setUnsuccessfulLoginMessage] =
     useState(null);
-    
+
   const {
     register,
     handleSubmit,
@@ -36,8 +37,12 @@ function LoginForm() {
         email: data.email,
         password: data.password,
       });
+      console.log(response);
       if (response?.status === 200) {
         setIsAuthenticated(true);
+        localStorage.setItem("token", response.data.accessToken);
+        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("avatar", response.data.avatar);
       }
     } catch (error) {
       setUnsuccessfulLoginMessage("Incorrect email or password.");
@@ -45,20 +50,37 @@ function LoginForm() {
   }
 
   return (
-    <>
-      <div className="unsuccessful-msg">{unsuccessfulLoginMessage}</div>
-      <Form className="container" onSubmit={handleSubmit(onSubmit)}>
+    <div className={styles.container}>
+      <div>{unsuccessfulLoginMessage}</div>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <h2>Login</h2>
-        <label>Email</label>
-        <Form.Control {...register("email")} />
+        <Form.Control
+          className={styles.input}
+          placeholder="Username or Email"
+          {...register("email")}
+        />
         {errors.email && <div>{errors.email.message}</div>}
-        <label>Password</label>
-        <Form.Control type="password" {...register("password")} />
+        <Form.Control
+          className={styles.input}
+          type="password"
+          placeholder="Password"
+          {...register("password")}
+        />
         {errors.password && <div>{errors.password.message}</div>}
 
-        <button>Send</button>
+        <button type="submit" className={styles.btn}>
+          Login
+        </button>
       </Form>
-    </>
+      <hr />
+      <div>
+        <span>Forgot your login details?</span>
+        <span>Get help signing in.</span>
+      </div>
+      <div className={styles.signUpLink}>
+        <span>Don't have an account yet? Sign up here.</span>
+      </div>
+    </div>
   );
 }
 
