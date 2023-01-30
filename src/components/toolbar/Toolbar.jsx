@@ -7,7 +7,6 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import { Toolbar as MuiToolbar } from "@mui/material";
 import { AuthenticationContext } from "../../App";
-import { redirect } from "react-router-dom";
 
 function Toolbar(props) {
   const { handleDrawerToggle } = props;
@@ -23,7 +22,6 @@ function Toolbar(props) {
   };
 
   const handleLogout = () => {
-    redirect("/");
     setIsAuthenticated(localStorage.clear());
   };
 

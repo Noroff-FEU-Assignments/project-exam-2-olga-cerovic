@@ -1,12 +1,12 @@
-import { useForm } from "react-hook-form";
+import React from "react";
+import { Form } from "react-bootstrap";
+import { BASE_URL } from "../../api";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { BASE_URL, LOGIN_PATH } from "../../api";
 import axios from "axios";
-import { useContext, useState } from "react";
-import { Form } from "react-bootstrap";
-import { AuthenticationContext } from "../../App";
-import styles from "./LoginForm.module.css";
+import { useForm } from "react-hook-form";
+
+import styles from "./Posts.module.css";
 
 const schema = yup.object().shape({
   email: yup
@@ -16,12 +16,7 @@ const schema = yup.object().shape({
   password: yup.string().required("Please enter your password"),
 });
 
-function LoginForm() {
-  const { setIsAuthenticated } = useContext(AuthenticationContext);
-
-  const [unsuccessfulLoginMessage, setUnsuccessfulLoginMessage] =
-    useState(null);
-
+function PostForm() {
   const {
     register,
     handleSubmit,
@@ -29,28 +24,18 @@ function LoginForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   async function onSubmit(data) {
-    setUnsuccessfulLoginMessage(null);
     try {
-      const response = await axios.post(`${BASE_URL}/${LOGIN_PATH}`, {
+      const response = await axios.post(`${BASE_URL}/`, {
         email: data.email,
         password: data.password,
       });
       if (response?.status === 200) {
-        setIsAuthenticated(true);
-        localStorage.setItem("token", response.data.accessToken);
-        localStorage.setItem("name", response.data.name);
-        localStorage.setItem("avatar", response.data.avatar);
       }
-    } catch (error) {
-      setUnsuccessfulLoginMessage("Incorrect email or password.");
-    }
+    } catch (error) {}
   }
-
   return (
-    <div className={styles.container}>
-      <div>{unsuccessfulLoginMessage}</div>
+    <div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <h2>Login</h2>
         <Form.Control
@@ -71,16 +56,8 @@ function LoginForm() {
           Login
         </button>
       </Form>
-      <hr />
-      <div>
-        <span>Forgot your login details?</span>
-        <span>Get help signing in.</span>
-      </div>
-      <div className={styles.signUpLink}>
-        <span>Don't have an account yet? Sign up here.</span>
-      </div>
     </div>
   );
 }
 
-export default LoginForm;
+export default PostForm;

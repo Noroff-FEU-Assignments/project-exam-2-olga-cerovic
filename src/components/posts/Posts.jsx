@@ -43,6 +43,7 @@ function Posts() {
 
   return (
     <div>
+      <Link to={`/posts/new`}>Create new post</Link>
       <ul>
         {posts?.map((post) => (
           <li key={post.id}>
