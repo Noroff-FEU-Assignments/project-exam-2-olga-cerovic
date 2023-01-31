@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { BASE_URL, GET_ALL_POSTS } from "../../api";
+import { BASE_URL, POSTS_PATH } from "../../api";
 import { Link } from "react-router-dom";
 
 function Posts() {
@@ -9,7 +9,7 @@ function Posts() {
   async function handleDelete(postId) {
     try {
       const response = await axios.delete(
-        `${BASE_URL}/${GET_ALL_POSTS}/${postId}`,
+        `${BASE_URL}/${POSTS_PATH}/${postId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -26,7 +26,7 @@ function Posts() {
 
   async function getAllPosts() {
     try {
-      const response = await axios.get(`${BASE_URL}/${GET_ALL_POSTS}`, {
+      const response = await axios.get(`${BASE_URL}/${POSTS_PATH}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

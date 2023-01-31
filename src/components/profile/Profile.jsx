@@ -1,6 +1,6 @@
 import { Avatar, Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { BASE_URL, UPDATE_PROFILE } from "../../api";
+import { BASE_URL, PROFILE_PATH } from "../../api";
 import ImageUpload from "../imageUpload/ImageUpload";
 import axios from "axios";
 
@@ -25,7 +25,7 @@ function Profile() {
   async function handleUploadImage() {
     try {
       const response = await axios.put(
-        `${BASE_URL}/${UPDATE_PROFILE}${localStorage.getItem("name")}/media`,
+        `${BASE_URL}/${PROFILE_PATH}${localStorage.getItem("name")}/media`,
         {
           avatar:
             "https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/288523620_10225542036650537_6057528886008546066_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=vX8fK089huMAX-vPB6R&_nc_ht=scontent.fosl3-2.fna&oh=00_AfCPX9EXvP_INbRKWAFpHxoSHc28EFjxLliKlHNuqDdHzg&oe=63DBC38A",

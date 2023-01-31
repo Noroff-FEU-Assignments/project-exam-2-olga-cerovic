@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL, GET_ALL_POSTS } from "../../api";
+import { BASE_URL, POSTS_PATH } from "../../api";
+import PostForm from "./PostForm";
 
 function Post() {
   const [post, setPost] = React.useState();
@@ -11,7 +12,7 @@ function Post() {
   async function getSinglePost() {
     try {
       const response = await axios.get(
-        `${BASE_URL}/${GET_ALL_POSTS}/${params.id}`,
+        `${BASE_URL}/${POSTS_PATH}/${params.id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -27,7 +28,7 @@ function Post() {
   useEffect(() => {
     getSinglePost();
   }, [params.id]);
-  return <div>{post?.title}</div>;
+  return <PostForm post={post} edit />;
 }
 
 export default Post;
