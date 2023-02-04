@@ -1,11 +1,15 @@
-.linkContainer {
-  /* text-decoration: none; */
+.listContainer {
+  list-style: none;
   box-shadow: 0px 0px 25px -15px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 25px -15px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 25px -15px rgba(0, 0, 0, 0.75);
   margin-bottom: 3rem;
   padding: 2rem;
   border-radius: 10px;
+}
+
+.linkContainer {
+  margin-bottom: 1.5rem;
 }
 
 .link {

@@ -13,13 +13,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "../toolbar/Toolbar";
-import Profile from "../profile/Profile";
+import MyProfile from "../profile/MyProfile";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 const menuItems = [
   { name: "My Profile", link: "/profile" },
   { name: "All Posts", link: "/posts" },
+  { name: "All Profiles", link: "/profiles" },
 ];
 
 function NavBar(props) {
