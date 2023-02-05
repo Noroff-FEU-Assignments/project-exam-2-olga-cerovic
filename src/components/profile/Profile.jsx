@@ -1,12 +1,10 @@
-import { Avatar, Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Avatar } from "@mui/material";
+import React, { useEffect } from "react";
 import { BASE_URL, PROFILE_PATH } from "../../api";
-import ImageUpload from "../imageUpload/ImageUpload";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 function Profile() {
-  console.log("nesto");
   const [profile, setProfile] = React.useState();
 
   const params = useParams();

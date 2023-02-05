@@ -46,7 +46,6 @@ function RegisterForm() {
         email: data.email,
         password: data.password,
       });
-      console.log(response);
       if (response?.status === 201) {
         setSuccessfulRegisterMessage("Register Successful.");
       }

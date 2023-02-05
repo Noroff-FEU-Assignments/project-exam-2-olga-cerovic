@@ -3,7 +3,6 @@ import axios from "axios";
 import { BASE_URL, POSTS_PATH } from "../../api";
 import { Link } from "react-router-dom";
 import styles from "./Posts.module.css";
-import { Card } from "react-bootstrap";
 
 function Posts() {
   const [posts, setPosts] = React.useState();
@@ -29,7 +28,8 @@ function Posts() {
   async function handleLike(postId) {
     try {
       const response = await axios.put(
-        `${BASE_URL}/${POSTS_PATH}/${postId}/react/like`,
+        `${BASE_URL}/${POSTS_PATH}/${postId}/react/❤️`,
+        undefined,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,6 +37,14 @@ function Posts() {
         }
       );
       if (response.status === 200) {
+        setPosts((previousState) =>
+          previousState.map((post) => {
+            if (post.id === postId) {
+              return { ...post, likeCount: response.data.count };
+            }
+            return post;
+          })
+        );
       }
     } catch (error) {
       console.log(error);
@@ -73,7 +81,9 @@ function Posts() {
             </Link>
             <br />
             <button onClick={() => handleDelete(post.id)}>DELETE</button>
-            <button onClick={() => handleLike(post.id)}>Like</button>
+            <button onClick={() => handleLike(post.id)}>
+              Like {post.likeCount ? `(${post.likeCount})` : ""}
+            </button>
           </li>
         ))}
       </ul>
