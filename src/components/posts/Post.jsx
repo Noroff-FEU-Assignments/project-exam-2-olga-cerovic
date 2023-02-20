@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL, POSTS_PATH } from "../../api";
 import PostForm from "./PostForm";
+import CommentForm from "./CommentForm";
 
 function Post() {
   const [post, setPost] = React.useState();
@@ -28,7 +29,13 @@ function Post() {
   useEffect(() => {
     getSinglePost();
   }, [params.id]);
-  return <PostForm post={post} edit />;
+
+  return (
+    <div>
+      <PostForm post={post} edit />
+      <CommentForm />
+    </div>
+  );
 }
 
 export default Post;

@@ -3,6 +3,7 @@ import axios from "axios";
 import { BASE_URL, POSTS_PATH } from "../../api";
 import { Link } from "react-router-dom";
 import styles from "./Posts.module.css";
+import { toast } from "react-toastify";
 
 function Posts() {
   const [posts, setPosts] = React.useState();
@@ -19,9 +20,10 @@ function Posts() {
       );
       if (response.status === 200) {
         setPosts((posts) => posts.filter((post) => post.id !== postId));
+        toast.success("Success");
       }
     } catch (error) {
-      console.log(error);
+      toast.error("You cannot delete posts that are not yours");
     }
   }
 

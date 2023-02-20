@@ -6,9 +6,8 @@ import axios from "axios";
 
 function MyProfile() {
   const [selectedFile, setSelectedFile] = React.useState(null);
-  const [preview, setPreview] = useState();
+  const [, setPreview] = useState();
 
-  // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined);
@@ -18,7 +17,6 @@ function MyProfile() {
     const objectUrl = URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
     handleUploadImage();
-    // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
@@ -28,7 +26,7 @@ function MyProfile() {
         `${BASE_URL}/${PROFILE_PATH}${localStorage.getItem("name")}/media`,
         {
           avatar:
-            "https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/288523620_10225542036650537_6057528886008546066_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=vX8fK089huMAX-vPB6R&_nc_ht=scontent.fosl3-2.fna&oh=00_AfCPX9EXvP_INbRKWAFpHxoSHc28EFjxLliKlHNuqDdHzg&oe=63DBC38A",
+            "https://media.npr.org/assets/img/2022/11/23/russian-toy-2-002--059b8a825dac13f92234d65777e6b29b0914e92f-s1100-c50.jpg",
         },
         {
           headers: {
@@ -37,7 +35,6 @@ function MyProfile() {
         }
       );
       if (response?.status === 200) {
-        // localStorage.setItem("avatar", response.data.avatar);
       }
     } catch (error) {
       console.log(error);

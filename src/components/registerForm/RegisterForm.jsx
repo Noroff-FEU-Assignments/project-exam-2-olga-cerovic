@@ -3,9 +3,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL, REGISTER_PATH } from "../../api";
 import axios from "axios";
-import { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name"),
@@ -23,12 +23,6 @@ const schema = yup.object().shape({
 });
 
 function RegisterForm() {
-  const [unsuccessfulRegisterMessage, setUnsuccessfulRegisterMessage] =
-    useState(null);
-
-  const [successfulRegisterMessage, setSuccessfulRegisterMessage] =
-    useState(null);
-
   const {
     register,
     handleSubmit,
@@ -37,9 +31,9 @@ function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate();
+
   async function onSubmit(data) {
-    setUnsuccessfulRegisterMessage(null);
-    setSuccessfulRegisterMessage(null);
     try {
       const response = await axios.post(`${BASE_URL}/${REGISTER_PATH}`, {
         name: data.name,
@@ -47,17 +41,17 @@ function RegisterForm() {
         password: data.password,
       });
       if (response?.status === 201) {
-        setSuccessfulRegisterMessage("Register Successful.");
+        toast.success("You are now a registered user");
+        navigate("/login");
       }
     } catch (error) {
-      setUnsuccessfulRegisterMessage("Incorrect information.");
+      console.log(error);
+      toast.error(error.response?.data?.errors?.[0]?.message);
     }
   }
 
   return (
     <>
-      <div className="unsuccessful-msg">{unsuccessfulRegisterMessage}</div>
-      <div className="successful-msg">{successfulRegisterMessage}</div>
       <Form className="container" onSubmit={handleSubmit(onSubmit)}>
         <h2>Register</h2>
 

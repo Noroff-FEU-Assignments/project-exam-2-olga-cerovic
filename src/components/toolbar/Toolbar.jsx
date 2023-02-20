@@ -7,11 +7,14 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import { Toolbar as MuiToolbar } from "@mui/material";
 import { AuthenticationContext } from "../../App";
+import styles from "./Toolbar.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Toolbar(props) {
   const { handleDrawerToggle } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { setIsAuthenticated } = useContext(AuthenticationContext);
+  const navigate = useNavigate();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,6 +26,11 @@ function Toolbar(props) {
 
   const handleLogout = () => {
     setIsAuthenticated(localStorage.clear());
+  };
+
+  const handleMyAccountClick = () => {
+    handleClose();
+    navigate("/profile");
   };
 
   return (
@@ -47,6 +55,7 @@ function Toolbar(props) {
       </Typography>
       <div>
         <Avatar
+          className={styles.avatar}
           alt="Remy Sharp"
           onClick={handleMenu}
           src={localStorage.getItem("avatar")}
@@ -67,7 +76,7 @@ function Toolbar(props) {
           onClose={handleClose}
         >
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
+          <MenuItem onClick={handleMyAccountClick}>My account</MenuItem>
         </Menu>
       </div>
     </MuiToolbar>
