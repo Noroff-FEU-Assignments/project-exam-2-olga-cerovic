@@ -4,6 +4,7 @@ import { BASE_URL, POSTS_PATH } from "../../api";
 import { Link } from "react-router-dom";
 import styles from "./Posts.module.css";
 import { toast } from "react-toastify";
+import CommentForm from "./CommentForm";
 
 function Posts() {
   const [posts, setPosts] = React.useState();
@@ -86,6 +87,7 @@ function Posts() {
             <button onClick={() => handleLike(post.id)}>
               Like {post.likeCount ? `(${post.likeCount})` : ""}
             </button>
+            <CommentForm postId={post.id} />
           </li>
         ))}
       </ul>

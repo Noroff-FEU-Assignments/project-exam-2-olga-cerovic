@@ -15,18 +15,30 @@ function App() {
     localStorage.getItem("token")
   );
 
+  const [user, setUser] = useState({
+    avatar: localStorage.getItem("avatar"),
+    banner: localStorage.getItem("banner"),
+    name: localStorage.getItem("name"),
+  });
+
   useEffect(() => {
     const getProfile = async () => {
-      const data = await fetchProfile({ name: localStorage.getItem("name") });
-      localStorage.setItem("avatar", data.avatar);
+      const data = await fetchProfile({ name: user?.name });
+      setUser({ avatar: data.avatar, banner: data.banner, name: data.name });
     };
     getProfile();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("avatar", user.avatar);
+    localStorage.setItem("banner", user.banner);
+    localStorage.setItem("name", user.name);
+  }, [user]);
+
   return (
     <Box>
       <AuthenticationContext.Provider
-        value={{ isAuthenticated, setIsAuthenticated }}
+        value={{ isAuthenticated, setIsAuthenticated, user, setUser }}
       >
         {!isAuthenticated ? (
           <Box className={styles.loginContainer}>

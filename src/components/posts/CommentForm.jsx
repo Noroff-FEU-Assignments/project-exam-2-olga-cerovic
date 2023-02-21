@@ -5,17 +5,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL, POSTS_PATH } from "../../api";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 const schema = yup.object().shape({
   body: yup.string().required("Please write a comment"),
 });
 
-function CommentForm() {
+function CommentForm(props) {
   const [unsuccessfulComment, setUnsuccessfulComment] = useState(null);
   const [successfulComment, setSuccessfulComment] = useState(null);
-
-  const params = useParams();
 
   const {
     register,
@@ -31,7 +28,7 @@ function CommentForm() {
     setSuccessfulComment(null);
     try {
       const response = await axios.post(
-        `${BASE_URL}/${POSTS_PATH}/${params.id}/comment`,
+        `${BASE_URL}/${POSTS_PATH}/${props.postId}/comment`,
         {
           body: data.body,
         },

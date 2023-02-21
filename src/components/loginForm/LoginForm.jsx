@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import { AuthenticationContext } from "../../App";
 import styles from "./LoginForm.module.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup
@@ -17,7 +18,9 @@ const schema = yup.object().shape({
 });
 
 function LoginForm() {
-  const { setIsAuthenticated } = useContext(AuthenticationContext);
+  const navigate = useNavigate();
+
+  const { setIsAuthenticated, setUser } = useContext(AuthenticationContext);
 
   const [unsuccessfulLoginMessage, setUnsuccessfulLoginMessage] =
     useState(null);
@@ -38,10 +41,14 @@ function LoginForm() {
         password: data.password,
       });
       if (response?.status === 200) {
+        navigate("/");
         setIsAuthenticated(true);
+        setUser({
+          avatar: response.data.avatar,
+          name: response.data.name,
+          banner: response.data.banner,
+        });
         localStorage.setItem("token", response.data.accessToken);
-        localStorage.setItem("name", response.data.name);
-        localStorage.setItem("avatar", response.data.avatar);
       }
     } catch (error) {
       setUnsuccessfulLoginMessage("Incorrect email or password.");
@@ -77,7 +84,9 @@ function LoginForm() {
         <span>Get help signing in.</span>
       </div>
       <div className={styles.signUpLink}>
-        <span>Don't have an account yet? Sign up here.</span>
+        <span>
+          Don't have an account yet?<Link to="/register"> Sign up here.</Link>
+        </span>
       </div>
     </div>
   );

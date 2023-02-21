@@ -8,11 +8,12 @@ import { useForm } from "react-hook-form";
 
 import styles from "./Posts.module.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter title"),
   body: yup.string(),
-  tags: yup.array(yup.string().oneOf(["test", "cat", "dog"])),
+  // tags: yup.array(yup.string().oneOf(["test", "cat", "dog"])),
   media: yup.string().nullable(),
 });
 
@@ -47,10 +48,12 @@ function PostForm(props) {
         }
       );
       if (response?.status === 200) {
+        toast.success("You have created a post");
         navigate("/posts");
       }
     } catch (error) {}
   }
+  console.log(errors);
 
   async function handleEditPost() {
     try {
@@ -64,9 +67,12 @@ function PostForm(props) {
         }
       );
       if (response?.status === 200) {
+        toast.success("Your post is edited");
         navigate("/posts");
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Your cannot edit post that you do not own");
+    }
   }
 
   const onSubmit = props.edit ? handleEditPost : handleCreatePost;

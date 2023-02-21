@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom";
 function Toolbar(props) {
   const { handleDrawerToggle } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { setIsAuthenticated } = useContext(AuthenticationContext);
+  const { setIsAuthenticated, user, setUser } = useContext(
+    AuthenticationContext
+  );
   const navigate = useNavigate();
 
   const handleMenu = (event) => {
@@ -25,7 +27,9 @@ function Toolbar(props) {
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(localStorage.clear());
+    localStorage.clear();
+    setIsAuthenticated(false);
+    setUser({ avatar: "", banner: "", name: "" });
   };
 
   const handleMyAccountClick = () => {
@@ -58,7 +62,7 @@ function Toolbar(props) {
           className={styles.avatar}
           alt="Remy Sharp"
           onClick={handleMenu}
-          src={localStorage.getItem("avatar")}
+          src={user?.avatar}
         />
         <Menu
           id="menu-appbar"
@@ -75,8 +79,8 @@ function Toolbar(props) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
           <MenuItem onClick={handleMyAccountClick}>My account</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </div>
     </MuiToolbar>

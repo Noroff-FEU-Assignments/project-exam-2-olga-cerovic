@@ -17,7 +17,7 @@ export const protectedRoutes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <div>Ovo je test</div>,
+        element: <MyProfile />,
       },
       {
         path: "/profile",

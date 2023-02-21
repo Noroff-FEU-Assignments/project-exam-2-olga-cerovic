@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, IconButton, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 
 function ImageUpload(props) {
   const { setSelectedFile } = props;
@@ -8,17 +8,23 @@ function ImageUpload(props) {
     setSelectedFile(target.files[0]);
   };
   return (
-    <Stack direction="row" alignItems="center" spacing={2}>
-      <Button variant="contained" component="label">
-        Upload
-        <input onChange={handleCapture} hidden accept="image/*" type="file" />
-      </Button>
-      <IconButton
-        color="primary"
-        aria-label="upload picture"
-        component="label"
-      ></IconButton>
-    </Stack>
+    <Button
+      variant="contained"
+      component="label"
+      sx={{
+        position: "absolute",
+        left: props.banner ? "15%" : "50%",
+        transform: "translate(-50%, -50%)",
+        opacity: "0.5",
+        border: "none",
+        "&:hover": {
+          opacity: "1",
+        },
+      }}
+    >
+      Upload
+      <input onChange={handleCapture} hidden accept="image/*" type="file" />
+    </Button>
   );
 }
 
