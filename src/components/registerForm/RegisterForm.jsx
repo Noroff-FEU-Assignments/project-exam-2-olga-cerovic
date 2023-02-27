@@ -6,6 +6,7 @@ import axios from "axios";
 import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import styles from "./RegisterForm.module.css";
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter your name"),
@@ -51,26 +52,45 @@ function RegisterForm() {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <Form className="container" onSubmit={handleSubmit(onSubmit)}>
         <h2>Register</h2>
 
-        <label>Name</label>
-        <Form.Control {...register("name")} />
+        <Form.Control
+          {...register("name")}
+          className={styles.input}
+          placeholder="Full Name"
+        />
         {errors.name && <div>{errors.name.message}</div>}
 
-        <label>Email</label>
-        <Form.Control {...register("email")} />
+        <Form.Control
+          {...register("email")}
+          className={styles.input}
+          placeholder="Email"
+        />
         {errors.email && <div>{errors.email.message}</div>}
 
-        <label>Password</label>
-        <Form.Control type="password" {...register("password")} />
+        <Form.Control
+          type="password"
+          {...register("password")}
+          className={styles.input}
+          placeholder="Password"
+        />
         {errors.password && <div>{errors.password.message}</div>}
 
-        <button type="submit">Register</button>
+        <button type="submit" className={styles.btn}>
+          Register
+        </button>
       </Form>
-      <Link to={"/"}>Go to Login Page</Link>
-    </>
+
+      <hr />
+
+      <div className={styles.signUpLink}>
+        <span>
+          Don't have an account yet? <Link to={"/"}>Go to Login Page</Link>
+        </span>
+      </div>
+    </div>
   );
 }
 

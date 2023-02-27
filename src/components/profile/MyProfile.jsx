@@ -75,23 +75,26 @@ function MyProfile() {
     <>
       <Box
         sx={{
+          margin: "auto",
+          maxWidth: 1050,
           position: "relative",
           backgroundColor: "violet",
-          height: 200,
+          maxHeight: 320,
           display: "flex",
           alignItems: "flex-end",
           justifyContent: "center",
+          borderRadius: 3,
         }}
       >
         <Box
           src={user?.banner}
           component="img"
-          sx={{ width: "100%", height: "100%" }}
+          sx={{ width: "100%", height: "100%", borderRadius: 3 }}
         />{" "}
         <Avatar
           sx={{
             position: "absolute",
-            top: "50%",
+            top: "75%",
             width: 150,
             height: 150,
           }}
@@ -100,7 +103,9 @@ function MyProfile() {
         <ImageUpload setSelectedFile={setSelectedAvatar} />
         <ImageUpload setSelectedFile={setSelectedBanner} banner />
       </Box>
-      <Typography>{user?.name}</Typography>
+      <Typography align="center" sx={{ position: "relative", top: "23%" }}>
+        {user?.name}
+      </Typography>
     </>
   );
 }

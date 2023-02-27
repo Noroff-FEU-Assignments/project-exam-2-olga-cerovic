@@ -24,7 +24,7 @@ body {
 
 .container {
   margin: auto;
-  transform: translateY(60%);
+  transform: translateY(55%);
   max-width: 500px;
   background-color: #fff;
   padding: 4rem;
@@ -39,8 +39,7 @@ body {
   height: 100vh;
   background-image: linear-gradient(to bottom left, #766cb5, #bc76df);
 }
-
-.formBottom {
+.signUpLink {
   text-align: center;
 }
 

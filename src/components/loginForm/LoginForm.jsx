@@ -79,14 +79,16 @@ function LoginForm() {
         </button>
       </Form>
       <hr />
-      <div>
-        <span>Forgot your login details?</span>
-        <span>Get help signing in.</span>
-      </div>
-      <div className={styles.signUpLink}>
-        <span>
-          Don't have an account yet?<Link to="/register"> Sign up here.</Link>
-        </span>
+      <div className={styles.formBottom}>
+        <div className={styles.signUpLink}>
+          <span>Forgot your login details? </span>
+          <Link to="/login"> Get help.</Link>
+        </div>
+        <div className={styles.signUpLink}>
+          <span>
+            Don't have an account yet?<Link to="/register"> Sign up here.</Link>
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -13,12 +13,16 @@ function ImageUpload(props) {
       component="label"
       sx={{
         position: "absolute",
-        left: props.banner ? "15%" : "50%",
+        left: props.banner ? "85%" : "55%",
+        top: props.banner ? "85%" : "112%",
         transform: "translate(-50%, -50%)",
-        opacity: "0.5",
+        // opacity: "0.5",
         border: "none",
         "&:hover": {
           opacity: "1",
+        },
+        "@media screen and (max-width: 400px)": {
+          backgroundColor: "red",
         },
       }}
     >

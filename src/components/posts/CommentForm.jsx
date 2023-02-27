@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL, POSTS_PATH } from "../../api";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+// import styles from "./CommentForm.module.css";
 
 const schema = yup.object().shape({
   body: yup.string().required("Please write a comment"),
