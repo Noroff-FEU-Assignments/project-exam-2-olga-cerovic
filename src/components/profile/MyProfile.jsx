@@ -4,6 +4,7 @@ import { BASE_URL, PROFILE_PATH } from "../../api";
 import ImageUpload from "../imageUpload/ImageUpload";
 import axios from "axios";
 import { AuthenticationContext } from "../../App";
+import Posts from "../posts/Posts";
 
 const imageUrls = [
   "https://th-thumbnailer.cdn-si-edu.com/LlpzsawSAkSUDonNwEd0zQrQaR4=/fit-in/1600x0/filters:focal(594x274:595x275)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/95/db/95db799b-fddf-4fde-91f3-77024442b92d/egypt_kitty_social.jpg",
@@ -72,7 +73,7 @@ function MyProfile() {
   console.log(user);
 
   return (
-    <>
+    <div>
       <Box
         sx={{
           margin: "auto",
@@ -94,6 +95,8 @@ function MyProfile() {
         <Avatar
           sx={{
             position: "absolute",
+            border: 5,
+            borderColor: "white",
             top: "75%",
             width: 150,
             height: 150,
@@ -103,10 +106,36 @@ function MyProfile() {
         <ImageUpload setSelectedFile={setSelectedAvatar} />
         <ImageUpload setSelectedFile={setSelectedBanner} banner />
       </Box>
-      <Typography align="center" sx={{ position: "relative", top: "23%" }}>
+      <Typography
+        align="center"
+        sx={{
+          position: "relative",
+          marginTop: "5rem",
+          marginBottom: "3rem",
+          "@media screen and (max-width: 900px)": {
+            marginTop: "5.3rem",
+          },
+          "@media screen and (max-width: 800px)": {
+            marginTop: "5.9rem",
+          },
+          "@media screen and (max-width: 710px)": {
+            marginTop: "6.5rem",
+          },
+          "@media screen and (max-width: 600px)": {
+            marginTop: "5.8rem",
+          },
+          "@media screen and (max-width: 500px)": {
+            marginTop: "6.6rem",
+          },
+          "@media screen and (max-width: 420px)": {
+            marginTop: "7rem",
+          },
+        }}
+      >
         {user?.name}
       </Typography>
-    </>
+      <Posts />
+    </div>
   );
 }
 

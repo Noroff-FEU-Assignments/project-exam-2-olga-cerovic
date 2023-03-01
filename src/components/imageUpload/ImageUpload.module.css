@@ -5,3 +5,9 @@
   opacity: 0.5;
   border: none;
 }
+
+.icon {
+  opacity: 1 !important;
+  z-index: 10000000000000;
+  color: #050505;
+}

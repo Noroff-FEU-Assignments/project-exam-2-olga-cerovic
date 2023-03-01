@@ -13,7 +13,6 @@ import { toast } from "react-toastify";
 const schema = yup.object().shape({
   title: yup.string().required("Please enter title"),
   body: yup.string(),
-  // tags: yup.array(yup.string().oneOf(["test", "cat", "dog"])),
   media: yup.string().nullable(),
 });
 
@@ -78,7 +77,7 @@ function PostForm(props) {
   const onSubmit = props.edit ? handleEditPost : handleCreatePost;
 
   return (
-    <div>
+    <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <h2>{props.edit ? "Edit" : "Create"}</h2>
         <Form.Control
@@ -101,7 +100,7 @@ function PostForm(props) {
           {props.edit ? "Edit Post" : "Create Post"}
         </button>
       </Form>
-    </div>
+    </>
   );
 }
 

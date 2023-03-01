@@ -40,7 +40,7 @@ function Toolbar(props) {
   return (
     <MuiToolbar
       sx={{
-        backgroundColor: "red",
+        backgroundColor: "#fff",
         zIndex: 1201,
         justifyContent: "space-between",
       }}

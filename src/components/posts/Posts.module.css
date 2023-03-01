@@ -1,5 +1,17 @@
+/* .postsContainer {
+  overflow: auto;
+  margin: auto;
+} */
+
+.newPostLink {
+  text-align: center !important;
+}
+
+li {
+  list-style: none;
+}
+
 .linkContainer {
-  /* text-decoration: none; */
   box-shadow: 0px 0px 25px -15px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 25px -15px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 25px -15px rgba(0, 0, 0, 0.75);
@@ -15,4 +27,11 @@
 .container {
   max-width: 600px;
   margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .postsContainer {
+    max-width: 25rem;
+    margin: 0.5rem;
+  }
 }

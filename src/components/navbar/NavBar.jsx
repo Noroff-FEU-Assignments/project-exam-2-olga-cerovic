@@ -13,6 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "../toolbar/Toolbar";
 import { NavLink, Outlet } from "react-router-dom";
+import styles from "./NavBar.module.css";
 
 const drawerWidth = 240;
 const menuItems = [
@@ -32,7 +33,11 @@ function NavBar(props) {
   const drawer = (
     <List sx={{ mt: 8 }}>
       {menuItems.map((menuItem, index) => (
-        <ListItem key={menuItem.name} disablePadding>
+        <ListItem
+          key={menuItem.name}
+          disablePadding
+          sx={{ backgroundColor: "#f8f8f8" }}
+        >
           <ListItemButton>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -56,7 +61,8 @@ function NavBar(props) {
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       />
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", backgroundColor: "#f8f8f8" }}>
+        {" "}
         <CssBaseline />
         <AppBar
           position="fixed"
@@ -67,7 +73,10 @@ function NavBar(props) {
         ></AppBar>
         <Box
           component="nav"
-          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+          sx={{
+            width: { sm: drawerWidth },
+            flexShrink: { sm: 0 },
+          }}
           aria-label="mailbox folders"
         >
           <Drawer
@@ -83,6 +92,7 @@ function NavBar(props) {
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
+                backgroundColor: "#f8f8f8",
               },
             }}
           >
@@ -91,10 +101,12 @@ function NavBar(props) {
           <Drawer
             variant="permanent"
             sx={{
+              backgroundColor: "#f8f8f8",
               display: { xs: "none", sm: "block" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
+                backgroundColor: "#f8f8f8",
               },
             }}
             open

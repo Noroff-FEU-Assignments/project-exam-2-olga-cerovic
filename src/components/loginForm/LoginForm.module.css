@@ -1,5 +1,9 @@
-body {
-  color: #414141 !important;
+.documentContainer {
+  overflow: auto;
+  align-items: center;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  /* background-color: #f8f8f8; */
 }
 
 .btn {
@@ -12,6 +16,10 @@ body {
   margin-top: 1.3rem;
   margin-bottom: 0.6rem;
   border-radius: 10px;
+}
+
+li {
+  background-color: #fff;
 }
 
 .input {
@@ -57,3 +65,9 @@ a {
 span {
   font-size: 0.9rem;
 }
+
+/* @media only screen and (max-width: 600px) {
+  .documentContainer {
+    m
+  }
+} */

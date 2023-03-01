@@ -72,8 +72,10 @@ function Posts() {
   }, []);
 
   return (
-    <div>
-      <Link to={`/posts/new`}>Create new post</Link>
+    <div className={styles.postsContainer}>
+      <Link to={`/posts/new`} className={styles.newPostLink}>
+        Create new post
+      </Link>
       <ul className={styles.container}>
         {posts?.map((post) => (
           <li key={post.id} className={styles.linkContainer}>

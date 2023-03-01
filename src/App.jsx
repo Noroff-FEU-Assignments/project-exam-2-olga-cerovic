@@ -36,7 +36,7 @@ function App() {
   }, [user]);
 
   return (
-    <Box>
+    <Box sx={{ maxWidth: "100%" }} className={styles.documentContainer}>
       <AuthenticationContext.Provider
         value={{ isAuthenticated, setIsAuthenticated, user, setUser }}
       >
