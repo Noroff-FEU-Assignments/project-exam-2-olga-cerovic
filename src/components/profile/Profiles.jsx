@@ -3,29 +3,10 @@ import axios from "axios";
 import { BASE_URL, PROFILE_PATH } from "../../api";
 import { Link } from "react-router-dom";
 import styles from "./Profiles.module.css";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 function Profiles() {
   const [profiles, setProfiles] = React.useState();
-
-  //   async function handleDelete(profileId) {
-  //     try {
-  //       const response = await axios.delete(
-  //         `${BASE_URL}/${PROFILE_PATH}/${profileId}`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //           },
-  //         }
-  //       );
-  //       if (response.status === 200) {
-  //         setProfiles((profiles) =>
-  //           profiles.filter((profile) => profile.id !== profileId)
-  //         );
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
 
   async function getAllProfiles() {
     try {
@@ -46,9 +27,11 @@ function Profiles() {
 
   return (
     <div>
-      <ul className={styles.listContainer}>
+      <h3 className={styles.allProfiles}>All Profiles</h3>
+      <ul>
         {profiles?.map((profile) => (
-          <li key={profile.name} className={styles.linkContainer}>
+          <li key={profile.name}>
+            <AccountCircleIcon sx={{ marginRight: "2rem" }} />
             <Link to={`/profiles/${profile.name}`} className={styles.link}>
               {profile.name}
             </Link>

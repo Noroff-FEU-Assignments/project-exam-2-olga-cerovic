@@ -19,11 +19,40 @@ li {
   margin-bottom: 3rem;
   padding: 2rem;
   border-radius: 10px;
-  background-color: #f8f8f8;
+  background-color: #fcfcfc;
 }
 
 .link {
   text-decoration: none;
+}
+
+.btnDelLike {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: end;
+}
+
+.btnLike {
+  border: none;
+  background-color: #fcfcfc;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  color: #414141;
+  margin-right: 2rem;
+}
+.btnDelete {
+  border: none;
+  background-color: #fcfcfc;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  color: #414141;
+  margin-right: 2rem;
+}
+
+.btnDelete:hover {
+  text-decoration: underline;
 }
 
 .container {
@@ -37,7 +66,7 @@ li {
 }
 
 .btn {
-  background-color: #1b00c9;
+  background-color: #533ada;
   border: none;
   color: #fff;
   width: 100%;

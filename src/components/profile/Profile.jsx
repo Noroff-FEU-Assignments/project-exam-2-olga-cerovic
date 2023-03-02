@@ -5,6 +5,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchProfile } from "../../utils/index";
+import styles from "./Profiles.module.css";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
+import Profiles from "./Profiles";
 
 function Profile() {
   const [profile, setProfile] = React.useState();
@@ -49,14 +53,35 @@ function Profile() {
   }, [params]);
 
   return (
-    <div>
-      <p>{profile?.name}</p>
-      <p>{profile?.email}</p>
-      <Avatar sx={{ width: 150, height: 150 }} src={profile?.avatar}>
+    <div className={styles.userPage}>
+      <Avatar
+        sx={{
+          width: 150,
+          height: 150,
+          margin: "auto",
+          marginBottom: "1rem",
+        }}
+        src={profile?.avatar}
+      >
         {profile?.name[0]}
       </Avatar>
-      <button onClick={() => handleFollow(true)}>Follow</button>
-      <button onClick={() => handleFollow(false)}>Unfollow</button>
+      <div className={styles.user}>
+        <p>{profile?.name}</p>
+        <p>{profile?.email}</p>
+      </div>
+      <div className={styles.follow}>
+        <button onClick={() => handleFollow(true)} className={styles.btn}>
+          Follow <PersonAddIcon />
+        </button>
+        <button onClick={() => handleFollow(false)} className={styles.btn}>
+          Unfollow
+          <PersonRemoveIcon />
+        </button>
+      </div>
+      <div className={styles.people}>
+        <h3 className={styles.heading}>People you may know</h3>
+        <Profiles />
+      </div>
     </div>
   );
 }

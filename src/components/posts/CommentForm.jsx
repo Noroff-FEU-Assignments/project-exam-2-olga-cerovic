@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL, POSTS_PATH } from "../../api";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import styles from "./CommentForm.module.css";
+import AddCommentIcon from "@mui/icons-material/AddComment";
 
 const schema = yup.object().shape({
   body: yup.string().required("Please write a comment"),
@@ -50,9 +52,17 @@ function CommentForm(props) {
   return (
     <div>
       <Form onSubmit={handleSubmit(handleComment)}>
-        <Form.Control placeholder="Write a comment..." {...register("body")} />
         {errors.body && <div>{errors.body.message}</div>}
-        <button type="Submit">Comment</button>
+        <div className={styles.form}>
+          <Form.Control
+            placeholder="Write a comment..."
+            {...register("body")}
+            className={styles.comment}
+          />
+          <button type="Submit" className={styles.btn}>
+            <AddCommentIcon />
+          </button>
+        </div>
       </Form>
       <div>{successfulComment}</div>
       <div>{unsuccessfulComment}</div>

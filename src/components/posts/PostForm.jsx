@@ -83,7 +83,7 @@ function PostForm(props) {
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)} className={styles.container}>
-        <h2>{props.edit ? "Edit" : "Create"}</h2>
+        <h2>{props.edit ? "Edit Post" : "Create Post"}</h2>
         <div className={styles.linkContainer}>
           <Form.Control
             className={styles.input}

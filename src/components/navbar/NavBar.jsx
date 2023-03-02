@@ -36,7 +36,7 @@ function NavBar(props) {
         <ListItem
           key={menuItem.name}
           disablePadding
-          sx={{ backgroundColor: "#f8f8f8" }}
+          sx={{ backgroundColor: "#fcfcfc" }}
         >
           <ListItemButton>
             <ListItemIcon>
@@ -61,7 +61,7 @@ function NavBar(props) {
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       />
-      <Box sx={{ display: "flex", backgroundColor: "#f8f8f8" }}>
+      <Box sx={{ display: "flex", backgroundColor: "#fcfcfc" }}>
         {" "}
         <CssBaseline />
         <AppBar
@@ -92,7 +92,7 @@ function NavBar(props) {
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
-                backgroundColor: "#f8f8f8",
+                backgroundColor: "#fcfcfc",
               },
             }}
           >
@@ -101,12 +101,12 @@ function NavBar(props) {
           <Drawer
             variant="permanent"
             sx={{
-              backgroundColor: "#f8f8f8",
+              backgroundColor: "#fcfcfc",
               display: { xs: "none", sm: "block" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
-                backgroundColor: "#f8f8f8",
+                backgroundColor: "#fcfcfc",
               },
             }}
             open

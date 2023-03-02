@@ -76,27 +76,37 @@ function Posts() {
     <div className={styles.postsContainer}>
       <PostForm />
       <hr />
-      <ul className={styles.container}>
-        {posts?.map((post) => (
-          <li key={post.id} className={styles.linkContainer}>
-            <Link to={`/posts/${post.id}`} className={styles.link}>
-              Edit
-            </Link>
-            <br />
-            <Link to={`/posts/${post.id}`} className={styles.link}>
-              {post.title}
-              <br />
-              {post.body}
-            </Link>
-            <br />
-            <button onClick={() => handleDelete(post.id)}>DELETE</button>
-            <button onClick={() => handleLike(post.id)}>
-              Like {post.likeCount ? `(${post.likeCount})` : ""}
-            </button>
-            <CommentForm postId={post.id} />
-          </li>
-        ))}
-      </ul>
+      <div className={styles.container}>
+        <h3>All Posts</h3>
+        <ul className={styles.container}>
+          {posts?.map((post) => (
+            <li key={post.id} className={styles.linkContainer}>
+              <Link to={`/posts/${post.id}`} className={styles.link}>
+                {post.title}
+                <br />
+                {post.body}
+              </Link>
+              <div className={styles.btnDelLike}>
+                <button
+                  onClick={() => handleLike(post.id)}
+                  className={styles.btnLike}
+                >
+                  Like {post.likeCount ? `(${post.likeCount})` : ""}
+                </button>
+                <button
+                  onClick={() => handleDelete(post.id)}
+                  className={styles.btnDelete}
+                >
+                  Delete
+                </button>
+                <Link to={`/posts/${post.id}`}>Edit</Link>
+              </div>
+              <hr />
+              <CommentForm postId={post.id} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

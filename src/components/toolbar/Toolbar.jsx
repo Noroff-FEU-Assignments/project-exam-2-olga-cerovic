@@ -1,4 +1,4 @@
-import { IconButton } from "@mui/material";
+import { AppBar, IconButton } from "@mui/material";
 import React, { useContext } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
@@ -41,9 +41,10 @@ function Toolbar(props) {
     <MuiToolbar
       sx={{
         boxShadow: 5,
-        backgroundColor: "#fff",
+        backgroundColor: "#533ADA",
         zIndex: 1201,
         justifyContent: "space-between",
+        color: "#fff",
       }}
     >
       <IconButton
