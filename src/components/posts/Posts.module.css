@@ -1,10 +1,11 @@
-/* .postsContainer {
-  overflow: auto;
-  margin: auto;
-} */
-
 .newPostLink {
   text-align: center !important;
+}
+
+.postIcons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 li {
@@ -18,6 +19,7 @@ li {
   margin-bottom: 3rem;
   padding: 2rem;
   border-radius: 10px;
+  background-color: #f8f8f8;
 }
 
 .link {
@@ -25,8 +27,25 @@ li {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
+  padding-left: 0;
+}
+
+.input {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: #1b00c9;
+  border: none;
+  color: #fff;
+  width: 100%;
+  padding: 0.8rem;
+  font-weight: 500;
+  margin-top: 1.3rem;
+  margin-bottom: 0.6rem;
+  border-radius: 10px;
 }
 
 @media only screen and (max-width: 600px) {

@@ -10,6 +10,10 @@ import styles from "./Posts.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
+import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
+import TocIcon from "@mui/icons-material/Toc";
+
 const schema = yup.object().shape({
   title: yup.string().required("Please enter title"),
   body: yup.string(),
@@ -70,7 +74,7 @@ function PostForm(props) {
         navigate("/posts");
       }
     } catch (error) {
-      toast.error("Your cannot edit post that you do not own");
+      toast.error("Your can't edit posts created by other users");
     }
   }
 
@@ -78,27 +82,52 @@ function PostForm(props) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)} className={styles.container}>
         <h2>{props.edit ? "Edit" : "Create"}</h2>
-        <Form.Control
-          className={styles.input}
-          placeholder="Type in title"
-          {...register("title")}
-        />
-        {errors.title && <div>{errors.title.message}</div>}
+        <div className={styles.linkContainer}>
+          <Form.Control
+            className={styles.input}
+            placeholder="Type in title"
+            {...register("title")}
+          />
+          {errors.title && <div>{errors.title.message}</div>}
 
-        <Form.Control
-          as="textarea"
-          rows={3}
-          className={styles.input}
-          placeholder="Write some text"
-          {...register("body")}
-        />
-        {errors.body && <div>{errors.body.message}</div>}
-
-        <button type="submit" className={styles.btn}>
-          {props.edit ? "Edit Post" : "Create Post"}
-        </button>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            className={styles.input}
+            placeholder="Write some text"
+            {...register("body")}
+          />
+          {errors.body && <div>{errors.body.message}</div>}
+          <hr />
+          <div className={styles.postIcons}>
+            <span>
+              <AddAPhotoIcon
+                sx={{
+                  marginRight: "2.5rem",
+                  "@media screen and (max-width: 680px)": {
+                    marginRight: "1rem",
+                  },
+                }}
+              />
+              <TocIcon
+                sx={{
+                  marginRight: "2.5rem",
+                  "@media screen and (max-width: 680px)": {
+                    marginRight: "1rem",
+                  },
+                }}
+              />
+              <AddLocationAltIcon />
+            </span>
+            <span>
+              <button type="submit" className={styles.btn}>
+                {props.edit ? "Edit Post" : "Create Post"}
+              </button>
+            </span>
+          </div>
+        </div>
       </Form>
     </>
   );

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./Posts.module.css";
 import { toast } from "react-toastify";
 import CommentForm from "./CommentForm";
+import PostForm from "./PostForm";
 
 function Posts() {
   const [posts, setPosts] = React.useState();
@@ -73,12 +74,15 @@ function Posts() {
 
   return (
     <div className={styles.postsContainer}>
-      <Link to={`/posts/new`} className={styles.newPostLink}>
-        Create new post
-      </Link>
+      <PostForm />
+      <hr />
       <ul className={styles.container}>
         {posts?.map((post) => (
           <li key={post.id} className={styles.linkContainer}>
+            <Link to={`/posts/${post.id}`} className={styles.link}>
+              Edit
+            </Link>
+            <br />
             <Link to={`/posts/${post.id}`} className={styles.link}>
               {post.title}
               <br />
