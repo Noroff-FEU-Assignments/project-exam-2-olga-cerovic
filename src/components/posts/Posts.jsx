@@ -99,7 +99,9 @@ function Posts() {
                 >
                   Delete
                 </button>
-                <Link to={`/posts/${post.id}`}>Edit</Link>
+                <Link to={`/posts/${post.id}`} className={styles.editBtn}>
+                  Edit
+                </Link>
               </div>
               <hr />
               <CommentForm postId={post.id} />

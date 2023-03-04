@@ -53,14 +53,17 @@ function CommentForm(props) {
     <div>
       <Form onSubmit={handleSubmit(handleComment)}>
         {errors.body && <div>{errors.body.message}</div>}
+        <Form.Control
+          placeholder="Write a comment..."
+          {...register("body")}
+          className={styles.comment}
+        />
         <div className={styles.form}>
-          <Form.Control
-            placeholder="Write a comment..."
-            {...register("body")}
-            className={styles.comment}
-          />
           <button type="Submit" className={styles.btn}>
             <AddCommentIcon />
+          </button>
+          <button type="Submit" className={styles.commentBtn}>
+            Comment
           </button>
         </div>
       </Form>

@@ -1,12 +1,27 @@
-.btn {
-  background-color: #fcfcfc;
+.commentBtn {
+  background-color: #533ada;
   border: none;
+  color: #fff;
+  max-width: 200px;
+  padding: 0.8rem;
   font-weight: 500;
+  margin-top: 1.3rem;
+  margin-bottom: 0.6rem;
   border-radius: 10px;
 }
 
 .form {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border: none;
+  align-items: baseline;
+}
+
+.btn {
+  background-color: #fcfcfc;
+  color: #414141;
+  border: none;
+  font-weight: 500;
+  border-radius: 10px;
+  padding-left: 0;
 }
