@@ -6,6 +6,9 @@ import styles from "./Posts.module.css";
 import { toast } from "react-toastify";
 import CommentForm from "./CommentForm";
 import PostForm from "./PostForm";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 function Posts() {
   const [posts, setPosts] = React.useState();
@@ -83,7 +86,9 @@ function Posts() {
             <li key={post.id} className={styles.linkContainer}>
               <Link to={`/posts/${post.id}`} className={styles.link}>
                 {post.title}
-                <br />
+              </Link>
+              <br />
+              <Link to={`/posts/${post.id}`} className={styles.linkBody}>
                 {post.body}
               </Link>
               <div className={styles.btnDelLike}>
@@ -91,16 +96,17 @@ function Posts() {
                   onClick={() => handleLike(post.id)}
                   className={styles.btnLike}
                 >
-                  Like {post.likeCount ? `(${post.likeCount})` : ""}
+                  <FavoriteIcon />
+                  {post.likeCount ? `(${post.likeCount})` : ""}
                 </button>
                 <button
                   onClick={() => handleDelete(post.id)}
                   className={styles.btnDelete}
                 >
-                  Delete
+                  <DeleteIcon />
                 </button>
                 <Link to={`/posts/${post.id}`} className={styles.editBtn}>
-                  Edit
+                  <EditIcon />
                 </Link>
               </div>
               <hr />

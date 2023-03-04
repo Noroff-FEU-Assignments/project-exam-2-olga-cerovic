@@ -86,7 +86,7 @@ function LoginForm() {
         </div>
         <div className={styles.signUpLink}>
           <span>
-            Don't have an account yet?<Link to="/register"> Sign up here.</Link>
+            Don't have an account?<Link to="/register"> Sign up here.</Link>
           </span>
         </div>
       </div>

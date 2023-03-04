@@ -87,7 +87,7 @@ function RegisterForm() {
 
       <div className={styles.signUpLink}>
         <span>
-          Don't have an account yet? <Link to={"/"}>Go to Login Page</Link>
+          Already have an account? <Link to={"/"}>Go to Login Page</Link>
         </span>
       </div>
     </div>

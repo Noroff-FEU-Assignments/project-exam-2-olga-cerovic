@@ -109,6 +109,8 @@ function MyProfile() {
       <Typography
         align="center"
         sx={{
+          fontWeight: "600",
+          fontSize: "2rem",
           position: "relative",
           marginTop: "5rem",
           marginBottom: "3rem",
