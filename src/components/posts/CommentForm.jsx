@@ -6,7 +6,7 @@ import { BASE_URL, POSTS_PATH } from "../../api";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import styles from "./CommentForm.module.css";
-import AddCommentIcon from "@mui/icons-material/AddComment";
+import CommentIcon from "@mui/icons-material/Comment";
 
 const schema = yup.object().shape({
   body: yup.string().required("Please write a comment"),
@@ -59,9 +59,7 @@ function CommentForm(props) {
           className={styles.comment}
         />
         <div className={styles.form}>
-          <button type="Submit" className={styles.btn}>
-            <AddCommentIcon />
-          </button>
+          <CommentIcon className={styles.btn} />
           <button type="Submit" className={styles.commentBtn}>
             Comment
           </button>

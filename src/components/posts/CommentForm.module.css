@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   border: none;
-  align-items: baseline;
+  align-items: center;
 }
 
 .btn {
