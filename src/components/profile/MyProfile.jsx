@@ -1,9 +1,9 @@
-import { Avatar, Box, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
+import { Avatar, Box, Typography } from "@mui/material";
 import { BASE_URL, PROFILE_PATH } from "../../api";
-import ImageUpload from "../imageUpload/ImageUpload";
 import axios from "axios";
 import { AuthenticationContext } from "../../App";
+import ImageUpload from "../imageUpload/ImageUpload";
 import Posts from "../posts/Posts";
 
 const imageUrls = [

@@ -1,14 +1,14 @@
-import { Avatar } from "@mui/material";
 import React, { useEffect } from "react";
-import { BASE_URL, PROFILE_PATH } from "../../api";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { fetchProfile } from "../../utils/index";
-import styles from "./Profiles.module.css";
+import axios from "axios";
+import { Avatar } from "@mui/material";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
+import { fetchProfile } from "../../utils/index";
+import { BASE_URL, PROFILE_PATH } from "../../api";
 import Profiles from "./Profiles";
+import styles from "./Profiles.module.css";
 
 function Profile() {
   const [profile, setProfile] = React.useState();
