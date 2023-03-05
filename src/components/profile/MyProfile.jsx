@@ -88,7 +88,9 @@ function MyProfile() {
         }}
       >
         <Box
-          src={user?.banner}
+          src={
+            user.banner ?? "https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg"
+          }
           component="img"
           sx={{ width: "100%", height: "100%", borderRadius: 3 }}
         />{" "}
