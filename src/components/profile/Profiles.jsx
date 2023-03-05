@@ -5,8 +5,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { BASE_URL, PROFILE_PATH } from "../../api";
 import styles from "./Profiles.module.css";
 
-function Profiles() {
+function Profiles(props) {
   const [profiles, setProfiles] = React.useState();
+  const { title } = props;
 
   async function getAllProfiles() {
     try {
@@ -27,7 +28,7 @@ function Profiles() {
 
   return (
     <div>
-      <h3 className={styles.allProfiles}>All Profiles</h3>
+      <h3 className={styles.allProfiles}>{title ?? "All Profiles"}</h3>
       <ul>
         {profiles?.map((profile) => (
           <li key={profile.name}>

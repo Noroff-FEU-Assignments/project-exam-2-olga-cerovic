@@ -79,8 +79,7 @@ function Profile() {
         </button>
       </div>
       <div className={styles.people}>
-        <h3 className={styles.heading}>People you may know</h3>
-        <Profiles />
+        <Profiles title="People you may know" />
       </div>
     </div>
   );

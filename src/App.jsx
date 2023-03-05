@@ -44,7 +44,7 @@ function App() {
             <RouterProvider router={otherRoutes} />
           </Box>
         ) : (
-          <RouterProvider router={protectedRoutes}></RouterProvider>
+            <RouterProvider router={protectedRoutes}></RouterProvider>
         )}
         <ToastContainer />
       </AuthenticationContext.Provider>

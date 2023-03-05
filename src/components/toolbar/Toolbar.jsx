@@ -40,6 +40,8 @@ function Toolbar(props) {
   return (
     <MuiToolbar
       sx={{
+        position: "fixed",
+        width: "100%",
         boxShadow: 5,
         backgroundColor: "#533ADA",
         zIndex: 1201,
