@@ -48,12 +48,17 @@ function PostForm(props) {
         }
       );
       if (response?.status === 200) {
+        reset();
         toast.success("You have created a post");
-        navigate("/posts");
+        if (props.edit) {
+          navigate("/posts");
+        }
+        if (props.setPosts) {
+          props.setPosts((prevState) => [response.data, ...prevState]);
+        }
       }
     } catch (error) {}
   }
-  console.log(errors);
 
   async function handleEditPost() {
     try {

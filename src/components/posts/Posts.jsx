@@ -25,7 +25,7 @@ function Posts() {
       );
       if (response.status === 200) {
         setPosts((posts) => posts.filter((post) => post.id !== postId));
-        toast.success("Success");
+        toast.success("You have deleted your post");
       }
     } catch (error) {
       toast.error("You cannot delete posts that are not yours");
@@ -77,7 +77,7 @@ function Posts() {
 
   return (
     <div className={styles.postsContainer}>
-      <PostForm />
+      <PostForm setPosts={setPosts} />
       <hr />
       <div className={styles.container}>
         <h3>All Posts</h3>

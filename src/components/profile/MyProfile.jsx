@@ -5,6 +5,7 @@ import axios from "axios";
 import { AuthenticationContext } from "../../App";
 import ImageUpload from "../imageUpload/ImageUpload";
 import Posts from "../posts/Posts";
+import { toast } from "react-toastify";
 
 const imageUrls = [
   "https://th-thumbnailer.cdn-si-edu.com/LlpzsawSAkSUDonNwEd0zQrQaR4=/fit-in/1600x0/filters:focal(594x274:595x275)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/95/db/95db799b-fddf-4fde-91f3-77024442b92d/egypt_kitty_social.jpg",
@@ -65,12 +66,12 @@ function MyProfile() {
           name: response.data.name,
           banner: response.data.banner,
         });
+        toast.success("You have uploaded your image");
       }
     } catch (error) {
       console.log(error);
     }
   }
-  console.log(user);
 
   return (
     <div>
