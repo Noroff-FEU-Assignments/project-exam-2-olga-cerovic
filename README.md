@@ -4,15 +4,22 @@ A a simple social media application built using ReactJS, where users can post up
 
 ## Description
 
-    - User can w
-    - User can add/ remove products to/ from favorites list
-    - User can fill out contact form
-    - User can view products in their cart
-    - Admin can login/ logout
+    - User can register
+    - Registered user can login
+    - Registered user can logout
+    - User can update profile photo logged in
+    - User can update banner when logged in
+    - User can create a post when logged in
+    - User can view all posts when logged in
+    - User can edit/ delete post they own when logged in
+    - User can like a post when logged in
+    - User can view list of all profiles when logged in
+    - User can view single profile when logged in
+    - User can follow/ unfollow a profile when logged in
 
 ## Built With
 
-    - React
+    - ReactJS
     - Yup
     - Axios
     - Material UI
